@@ -1,19 +1,24 @@
 package it_sevenbits;
 
-public class Parser<array> {
+public class Parser {
     public static String[] parse(final String strInput) {
-        char[] array1 = strInput.toCharArray();
-        int number_of_spaces = 0;
-        int dimension = 0;
+        int number = 0;
+        int j = 0;
+        int u = 0;
         for (int i = 1; i < strInput.length(); i++) {
-            if (array1[i] == ' ')
-                number_of_spaces++;
+            if (strInput.charAt(i) == ' ')
+                number++;
         }
-        String[] array = new String[number_of_spaces+1];
-        for (String str : strInput.split(" ")) {
-            array[dimension] = str;
-            dimension++;
+        String[] array = new String[number + 1];
+        for (int i = 0; i < strInput.length(); i++) {
+            if (strInput.charAt(i) == ' ') {
+                array[u] = strInput.substring(j, i);
+                j = i + 1;
+                u++;
+            }
+
         }
+        array[u] = strInput.substring(j);
         return array;
     }
 }
