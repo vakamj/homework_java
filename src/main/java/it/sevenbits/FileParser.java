@@ -21,6 +21,7 @@ public class FileParser implements IParser {
             throw new ParserException("\n" +
                     "empty");
         }
+
         String[] array = new String[0];
         try (BufferedReader file = new BufferedReader(new FileReader(source))) {
             String line;
