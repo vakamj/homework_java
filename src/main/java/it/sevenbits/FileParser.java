@@ -17,12 +17,8 @@ public class FileParser implements IParser {
      * @throws ParserException exception
      */
     public String[] parse(final String delimiter, final String source) throws ParserException {
-        if (source.length() == 0) {
-            throw new ParserException("\n" +
-                    "empty");
-        }
 
-        String[] array = new String[0];
+        String[] array;
         try (BufferedReader file = new BufferedReader(new FileReader(source))) {
             String line;
             StringBuilder sb = new StringBuilder();
@@ -30,9 +26,11 @@ public class FileParser implements IParser {
             while ((line = file.readLine()) != null) {
                 sb.append(line).append(delimiter);
             }
-            array = stringParser.parse(delimiter, sb.toString().trim());
+
+           array = stringParser.parse(delimiter, sb.toString().trim());
         } catch (IOException e) {
-            e.getMessage();
+            System.out.println("Can’t read the file");
+            throw new ParserException(e);
         }
         return array;
     }
