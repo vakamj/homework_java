@@ -4,6 +4,7 @@ import it.sevenbits.FileParser;
 import it.sevenbits.IParser;
 import it.sevenbits.StringParser;
 import it.sevenbits.exceptions.ParserException;
+
 import java.util.Arrays;
 
 /**
@@ -15,22 +16,22 @@ public final class Main {
      */
     private Main() {
     }
+
     /**
      * displays words in line
-     *
      * @param args standard input arguments
      */
-    public static void main(final String [] args) {
+    public static void main(final String[] args) {
 
         IParser textParser = new StringParser();
         IParser fileParser = new FileParser();
         try {
-            System.out.println(Arrays.toString(textParser.parse(" ", "Here are four words")));
+            System.out.println(Arrays.toString(textParser.parse(" ", "Here   are four words")));
         } catch (ParserException e) {
             System.out.println(e.getMessage());
         }
         try {
-            System.out.println(Arrays.toString(textParser.parse("/", "And/here/are/five/words")));
+            System.out.println(Arrays.toString(textParser.parse(" ", null)));
         } catch (ParserException e) {
             System.out.println(e.getMessage());
         }
@@ -40,14 +41,8 @@ public final class Main {
             System.out.println(e.getMessage());
         }
         try {
-            System.out.println(Arrays.toString(fileParser.parse(" ", "src/main/resources/FewWords.txt")));
+            System.out.println(Arrays.toString(fileParser.parse(" ", "src/main/resources/FewWordsbgfb.txt")));
         } catch (ParserException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            System.out.println(Arrays.toString(fileParser.parse(" ", "src/main/resources/OneWord.txt")));
-        } catch (ParserException e) {
-            System.out.println(e.getMessage());
         }
         try {
             System.out.println(Arrays.toString(fileParser.parse(" ", "src/main/resources/EmptyFile.txt")));
