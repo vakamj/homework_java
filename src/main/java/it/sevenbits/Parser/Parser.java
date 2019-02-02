@@ -1,4 +1,4 @@
-package it.sevenbits;
+package it.sevenbits.Parser;
 
 public class Parser {
     public static String[] parse(final String strInput) {

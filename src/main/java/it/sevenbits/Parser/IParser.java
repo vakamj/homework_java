@@ -1,4 +1,4 @@
-package it.sevenbits;
+package it.sevenbits.Parser;
 
 import it.sevenbits.exceptions.ParserException;
 
