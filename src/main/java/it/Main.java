@@ -31,14 +31,15 @@ public final class Main {
         final int stringGrep = 1;
         final int typeGrep = 2;
         final int delimiterFilter = 3;
-        if ((args.length < 4) || (args[sourceGrep].isEmpty()) || (args[typeGrep].isEmpty())
+        final int typeDelimiter = 4;
+        if ((args.length < 4) || (args[sourceGrep].isEmpty()) || (args[stringGrep].isEmpty()) ||(args[typeGrep].isEmpty())
                 || (args[delimiterFilter].isEmpty())) {
             throw new IOException("Oops, something went wrong");
         }
 
         String delimiter = " ";
-        if (args.length == 5) {
-            delimiter = args[delimiterFilter];
+        if (args.length == 4) {
+            delimiter = args[typeDelimiter];
         }
         GrepFactory grepFactory = new GrepFactory();
         List<String> grepList = new ArrayList<>();
