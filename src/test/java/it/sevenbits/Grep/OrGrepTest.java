@@ -1,5 +1,6 @@
 package it.sevenbits.Grep;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -8,7 +9,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
 
 public class OrGrepTest {
     /**
@@ -20,11 +20,11 @@ public class OrGrepTest {
     public void doOrGrep() throws IOException {
         GrepFactory grepFactory = new GrepFactory();
         List<String> expectedList = new ArrayList<>();
-        expectedList.add("one wordkk");
-        expectedList.add("lines at the exit");
+        expectedList.add("seven two");
+        expectedList.add("five eight");
         List<String> grepList = new ArrayList<>();
-        grepList.add("wordkk");
-        grepList.add("exit");
+        grepList.add("seven");
+        grepList.add("eight");
         OrGrep orGrep = grepFactory.getOrGrep(grepList);
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
@@ -32,7 +32,7 @@ public class OrGrepTest {
                 throw new IOException("Файл пустой");
             }
             List<String> actualList = orGrep.doGrep(reader);
-            assertTrue(expectedList.containsAll(actualList));
+            Assert.assertEquals(expectedList, actualList);
         }
     }
 
@@ -46,7 +46,7 @@ public class OrGrepTest {
         GrepFactory grepFactory = new GrepFactory();
         List<String> grepList = new ArrayList<>();
         grepList.add("");
-        grepList.add("exit");
+        grepList.add("one");
         OrGrep orGrep = grepFactory.getOrGrep(grepList);
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
@@ -66,7 +66,7 @@ public class OrGrepTest {
         GrepFactory grepFactory = new GrepFactory();
         List<String> grepList = new ArrayList<>();
         grepList.add(null);
-        grepList.add("exit");
+        grepList.add("one");
         OrGrep orGrep = grepFactory.getOrGrep(grepList);
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {

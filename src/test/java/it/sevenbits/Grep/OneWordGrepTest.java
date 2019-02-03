@@ -1,5 +1,6 @@
 package it.sevenbits.Grep;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -7,8 +8,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.assertTrue;
 
 public class OneWordGrepTest {
     /**
@@ -18,17 +17,16 @@ public class OneWordGrepTest {
      */
     @Test
     public void doOneWordGrep() throws IOException {
-        OneWordGrep oneWordGrep = new OneWordGrep("words");
+        OneWordGrep oneWordGrep = new OneWordGrep("one");
         List<String> expectedList = new ArrayList<>();
-        expectedList.add("one of a set of words");
-        expectedList.add("all words from a set of words");
+        expectedList.add("one two");
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
             if (!reader.ready()) {
                 throw new IOException("empty file");
             }
             List<String> actualList = oneWordGrep.doGrep(reader);
-            assertTrue(expectedList.containsAll(actualList));
+            Assert.assertEquals(expectedList, actualList);
         }
     }
 
@@ -40,20 +38,19 @@ public class OneWordGrepTest {
     @Test
     public void doOneWordGrepFactory() throws IOException {
         GrepFactory grepFactory = new GrepFactory();
-        OneWordGrep oneWordGrep = grepFactory.getOneWordGrep("words");
+        OneWordGrep oneWordGrep = grepFactory.getOneWordGrep("two");
         List<String> expectedList = new ArrayList<>();
-        expectedList.add("one of a set of words");
-        expectedList.add("all words from a set of words");
+        expectedList.add("one two");
+        expectedList.add("seven two");
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
             if (!reader.ready()) {
                 throw new IOException("empty file");
             }
             List<String> actualList = oneWordGrep.doGrep(reader);
-            assertTrue(expectedList.containsAll(actualList));
+            Assert.assertEquals(expectedList, actualList);
         }
     }
-
     /**
      * test for checking empty grep-word
      *

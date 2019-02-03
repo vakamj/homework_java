@@ -1,5 +1,6 @@
 package it.sevenbits.Grep;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -8,18 +9,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
 
 public class AndGrepTest {
 
     @Test
     public void doAndGrep() throws IOException {
         List<String> expectedList = new ArrayList<>();
-        expectedList.add("one wordkk");
-        expectedList.add("one of a set of words");
+        expectedList.add("seven two");
         List<String> grepList = new ArrayList<>();
-        grepList.add("one wordkk");
-        grepList.add("one of a set of words");
+        grepList.add("seven");
+        grepList.add("two");
         AndGrep andGrep = new AndGrep(grepList);
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
@@ -27,7 +26,7 @@ public class AndGrepTest {
                 throw new IOException("empty file");
             }
             List<String> actualList = andGrep.doGrep(reader);
-            assertTrue(expectedList.containsAll(actualList));
+            Assert.assertEquals(expectedList, actualList);
         }
     }
 
@@ -41,7 +40,7 @@ public class AndGrepTest {
         GrepFactory grepFactory = new GrepFactory();
         List<String> grepList = new ArrayList<>();
         grepList.add("");
-        grepList.add("exit");
+        grepList.add("one");
         AndGrep andGrep = grepFactory.getAndGrep(grepList);
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
@@ -61,7 +60,7 @@ public class AndGrepTest {
         GrepFactory grepFactory = new GrepFactory();
         List<String> grepList = new ArrayList<>();
         grepList.add(null);
-        grepList.add("exit");
+        grepList.add("one");
         AndGrep andGrep = grepFactory.getAndGrep(grepList);
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
