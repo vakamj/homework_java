@@ -27,8 +27,8 @@ public class AndGrep implements IGrep {
                 throw new IOException("empty");
             }
         }
-
         this.list = list;
+
     }
 
     /**
@@ -43,24 +43,23 @@ public class AndGrep implements IGrep {
             StringBuilder sb = new StringBuilder();
             String delimiter = "/n";
             String line;
-            boolean stringContainsWord;
             while ((line = br.readLine()) != null) {
                 sb.append(line).append(delimiter);
             }
             String[] arrayString = sb.toString().split(delimiter);
-            for (String aList : list) {
-                for (int i = 0; i < arrayString.length; i++) {
+            boolean stringContainsWord = false;
+
+            for (int i = 0; i < arrayString.length; i++) {
+                for (String aList : list) {
                     if (!arrayString[i].contains(aList)) {
                         stringContainsWord = false;
-                        break;
-                    }
-                    if (stringContainsWord = true) {
-                        stringList.add(arrayString[i]);
                     }
                 }
+                if (stringContainsWord) {
+                    stringList.add(arrayString[i]);
+                }
+                stringContainsWord = true;
             }
-
-
         } catch (IOException e) {
             System.out.println("file is empty");
         }
