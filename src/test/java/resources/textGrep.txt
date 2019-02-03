@@ -1,4 +1,5 @@
-one wordkk
-one of a set of words
-all words from a set of words
-lines at the exit
+one two
+three four
+five six
+seven two
+five eight
