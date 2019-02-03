@@ -15,7 +15,7 @@ public class AndGrepTest {
     @Test
     public void doAndGrep() throws IOException {
         List<String> expectedList = new ArrayList<>();
-        expectedList.add("seven two");
+        expectedList.add("seven Two");
         List<String> grepList = new ArrayList<>();
         grepList.add("seven");
         grepList.add("two");

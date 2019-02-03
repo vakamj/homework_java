@@ -20,7 +20,7 @@ public class OrGrepTest {
     public void doOrGrep() throws IOException {
         GrepFactory grepFactory = new GrepFactory();
         List<String> expectedList = new ArrayList<>();
-        expectedList.add("seven two");
+        expectedList.add("seven Two");
         expectedList.add("five eight");
         List<String> grepList = new ArrayList<>();
         grepList.add("seven");

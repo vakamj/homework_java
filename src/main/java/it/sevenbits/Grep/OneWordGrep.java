@@ -43,7 +43,7 @@ public class OneWordGrep implements IGrep {
             }
             String[] arrayString = sb.toString().split(delimiter);
             for (int i = 0; i < arrayString.length; i++) {
-                if (arrayString[i].contains(wordGrep)) {
+                if (arrayString[i].toLowerCase().contains(wordGrep.toLowerCase())) {
                     list.add(arrayString[i]);
                 }
             }

@@ -38,10 +38,10 @@ public class OneWordGrepTest {
     @Test
     public void doOneWordGrepFactory() throws IOException {
         GrepFactory grepFactory = new GrepFactory();
-        OneWordGrep oneWordGrep = grepFactory.getOneWordGrep("two");
+        OneWordGrep oneWordGrep = grepFactory.getOneWordGrep("Two");
         List<String> expectedList = new ArrayList<>();
-        expectedList.add("one two");
-        expectedList.add("seven two");
+        expectedList.add("One tWo");
+        expectedList.add("seven Two");
         File file = new File("src/test/java/resources/textGrep.txt");
         try (BufferedReader reader = new BufferedReader(new java.io.FileReader(file))) {
             if (!reader.ready()) {

@@ -50,7 +50,7 @@ public class OrGrep implements IGrep {
             String[] arrayString = sb.toString().split(delimiter);
             for (String aList : list) {
                 for (int i = 0; i < arrayString.length; i++) {
-                    if (arrayString[i].contains(aList)) {
+                    if (arrayString[i].toLowerCase().contains(aList.toLowerCase())) {
                         stringList.add(arrayString[i]);
                     }
                 }

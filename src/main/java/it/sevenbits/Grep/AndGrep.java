@@ -51,7 +51,7 @@ public class AndGrep implements IGrep {
 
             for (int i = 0; i < arrayString.length; i++) {
                 for (String aList : list) {
-                    if (!arrayString[i].contains(aList)) {
+                    if (!arrayString[i].toLowerCase().contains(aList.toLowerCase())) {
                         stringContainsWord = false;
                     }
                 }
