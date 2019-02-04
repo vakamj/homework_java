@@ -40,26 +40,25 @@ public class AndGrep implements IGrep {
     public List doGrep(final Reader reader) throws IOException {
         List<String> stringList = new ArrayList();
         try (BufferedReader br = new BufferedReader(reader)) {
-            StringBuilder sb = new StringBuilder();
             String delimiter = "/n";
             String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line).append(delimiter);
-            }
-            String[] arrayString = sb.toString().split(delimiter);
-            boolean stringContainsWord = false;
+            boolean stringContainsWord = true;
 
-            for (int i = 0; i < arrayString.length; i++) {
-                for (String aList : list) {
-                    if (!arrayString[i].contains(aList)) {
-                        stringContainsWord = false;
+            while ((line = br.readLine()) != null) {
+                String[] arrayString = line.split(delimiter);
+                for (int i = 0; i < arrayString.length; i++) {
+                    for (String aList : list) {
+                        if (!arrayString[i].contains(aList)) {
+                            stringContainsWord = false;
+                        }
                     }
+                    if (stringContainsWord) {
+                        stringList.add(arrayString[i]);
+                    }
+                    stringContainsWord = true;
                 }
-                if (stringContainsWord) {
-                    stringList.add(arrayString[i]);
-                }
-                stringContainsWord = true;
             }
+
         } catch (IOException e) {
             System.out.println("file is empty");
         }
